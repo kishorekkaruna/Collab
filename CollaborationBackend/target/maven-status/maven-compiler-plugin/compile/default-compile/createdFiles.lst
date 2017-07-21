@@ -1,0 +1,4 @@
+com\niit\collaborationbackend\daoimpl\UserDAOImpl.class
+com\niit\collaborationbackend\model\User.class
+com\niit\collaborationbackend\AppConfig.class
+com\niit\collaborationbackend\dao\UserDAO.class
