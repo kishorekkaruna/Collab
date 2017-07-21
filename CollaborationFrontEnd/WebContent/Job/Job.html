@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+<link rel='stylesheet prefetch'
+	href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+<link rel='stylesheet prefetch'
+	href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+
+<link rel="stylesheet" href="Job/css/style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="card"></div>
+		<div class="card">
+			<h1 class="title">
+				Job
+				<div class="close"></div>
+			</h1>
+			<form ng-submit="jc.submit()">
+				<div class="input-container">
+					<input type="text" name="jobProfile" id="#{label}"
+						required="required" ng-model="jc.job.jobProfile" /> <label
+						for="jobProfile">Jobprofile</label>
+					<div class="bar"></div>
+				</div>
+				<div class="input-container">
+					<input type="text" name="jobDescription" id="#{label}"
+						required="required" ng-model="jc.job.jobDescription" /> <label
+						for="jobDescription">JobDescription</label>
+					<div class="bar"></div>
+				</div>
+				<div class="input-container">
+					<input type="text" name="qualification" id="#{label}"
+						required="required" ng-model="jc.job.qualification" /> <label
+						for="qualification">Qualification</label>
+					<div class="bar"></div>
+				</div>
+				<div class="button-container">
+					<button type="submit" onclick="">
+						<span>Next</span>
+					</button>
+				</div>
+			</form>
+
+		</div>
+		</div>
+		<script src="Job/js/index.js"></script>
+</body>
+</html>

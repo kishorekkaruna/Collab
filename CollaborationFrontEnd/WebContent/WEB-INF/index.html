@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Full Screen Landing Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css"
+	href="resources/index/css/style.css">
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link href="resources/index/css/animate.css" rel="stylesheet" />
+<link href="resources/index/css/waypoints.css" rel="stylesheet" />
+<script src="resources/index/js/jquery.waypoints.min.js"
+	type="text/javascript"></script>
+<script src="resources/index/js/waypoints.js" type="text/javascript"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-cookies.js"></script>
+
+
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="User/UserController.js"></script>
+<script type="text/javascript" src="User/UserService.js"></script>
+<script type="text/javascript" src="Job/JobController.js"></script>
+<script type="text/javascript" src="Job/JobServices.js"></script>
+<script type="text/javascript" src="Blog/BlogController.js"></script>
+<script type="text/javascript" src="Blog/BlogService.js"></script>
+<script type="text/javascript" src="Forum/ForumController.js"></script>
+<script type="text/javascript" src="Forum/ForumService.js"></script>
+
+<style>
+</style>
+</head>
+<body ng-app="Kishore">
+	 <section>
+		<header> 
+			<nav>
+				<input type="checkbox" class="nav-check" id="nav-check"> <label
+					class="nav-label" for="nav-check"> <img class="nav-open"
+					src="resources/index/images/menu.png"> <img class="nav-close"
+					src="resources/index/images/close-nav.png">
+				</label>
+				<ul class="nav">
+					<li><a href="#!blog">Blog</a></li>
+					<li><a href="">Event</a></li>
+					<li><a href="#!forum">Forum</a></li>
+					<li><a href="#!job">Job</a></li>
+					<li><a href="#!register">SignIn</a></li>
+					<!-- <li><a href="">SignUp</a></li> -->
+				</ul>
+			</nav>
+		</header>
+			</section>
+
+	<div ng-view></div>
+</body>
+</html>
