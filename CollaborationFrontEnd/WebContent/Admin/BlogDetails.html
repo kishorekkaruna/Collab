@@ -1,0 +1,5 @@
+<div><h1 style="margin-top: 2em;">{{viewBlogs.blog_name}}</h1>
+<h5>Created by : <b>{{viewBlogs.user_name}}</b> | Created On : <b>{{viewBlogs.timeStamp}}</b></h5>
+<h4>{{viewBlogs.blog_content}}</h4></div>
+<button type="button" ng-click="bcc.accept(viewBlogs)" color="blue">Approve</button>    
+<button type="button" ng-click="bcc.rejectBlog(viewBlogs)">Reject</button>

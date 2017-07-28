@@ -20,6 +20,14 @@ console.log("UserService...")
                      );
      },
      
+     userDetails:function(user){
+    	 	console.log("user details")
+    	 	return $http(BASE_URL+'/#contact',user).then(function(response){
+    	 		return response;
+    	 	})
+    	 
+     },
+     
      login: function(user){
   	   console.log("Calling the method authenticate with the user :"+user)
 		 
@@ -29,7 +37,17 @@ console.log("UserService...")
                       }, 
                      null
               );
-     	}
+     	},
+     	logout: function(){
+        	console.log('logout....')
+            return $http.get(BASE_URL+'/logout')
+                    .then(
+                            function(response){
+                                return response.data;
+                            }, 
+                          null
+                    );
+     	},
 	}
 }
 	

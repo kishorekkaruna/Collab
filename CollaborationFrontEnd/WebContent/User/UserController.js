@@ -16,6 +16,14 @@ app.controller('UserController',['$scope','UserService','$cookies','$rootScope',
 							console.error('Error while creating User.');
 						});
 					};
+					self.userDetails = function(user){
+						console.log('acces user details')
+						UserService.userDetails().then(function(d){
+							console.log(d)
+							self.userdetails=d;
+							console.log(self.userdetails)
+						})
+					};
 					self.login = function() {
 						UserService.login(self.user).then(function(response) {
 							console.log(response.status)
@@ -24,13 +32,31 @@ app.controller('UserController',['$scope','UserService','$cookies','$rootScope',
 							$rootScope.currentUser = response.data;
 							$cookieStore.put("currentUser", response.data);
 							alert('Logged in succesfully...');
-							$location.path('/blog')
+							if($scope.user.role == 'STUDENT'){
+								 $location.path('/home');
+							  }else if($scope.user.role == 'ADMIN'){
+								  $location.path('/admin');
+							}else if($scope.user.role == 'USER'){
+								  $location.path('/homeMain');}
+							else{
+								 $location.path('/blog');
+								}
+							
 						}, function(response) {
 							console.log(response.status)
 							$scope.message = response.data.message
 							$location.path('/login')
 						})  
 					};
+					
+					self.logout = function() {
+						console.log("logout")
+						$rootScope.currentUser = {};
+						$cookieStore.remove('currentUser');
+						$cookies.remove('currentUser');
+						UserService.logout()
+						$location.path('/login')	
+						};
 					self.submit = function() {
 						console.log('Calling Submit...')
 						self.createUser(self.user);

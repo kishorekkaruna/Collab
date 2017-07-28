@@ -13,7 +13,9 @@ html, body {
 	height: 100%;
 	width: 100%;
 	margin: auto;
-	background:url(https://static.pexels.com/photos/89869/pexels-photo-89869.jpeg), no-repeat 50%;
+	background:url("https://static.pexels.com/photos/89869/pexels-photo-89869.jpeg"), no-repeat 50%;
+	background-color: #c1bbbb;
+	text-shadow: 0 0 8px #3e3d3d;
 	display: table;
 	top: 0;
 	background-size: cover;
@@ -40,11 +42,19 @@ html, body {
 	font-weight: 70;
 }
 
+.con1{
+	text-align: left;
+	font:bold;
+	font-family: 'Yantramanav', sans-serif;
+	font-size: 100%;
+	font-weight: 600;
+}
+
 .content h1 {
 	font-family: 'Yantramanav', sans-serif;
 	font-size: 600%;
 	font-weight: 100;
-	color: #e1efe9;
+	color: #333333;
 }
 
 .btn {

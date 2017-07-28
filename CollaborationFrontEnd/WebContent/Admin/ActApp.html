@@ -1,0 +1,43 @@
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+.newspaper {
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+    
+    webkit-column-rule: 4px outset #ff00ff; /* Chrome, Safari, Opera */
+    -moz-column-rule: 4px outset #ff00ff; /* Firefox */
+    column-rule: 4px outset #ff00ff;
+}
+</style>
+<div  style="margin: 4em;" ng-controller="BlogController as blogsNotAccepted" >
+<h3 class="well">Blogs</h3>
+<div ng-init="blogsNotAccepted.notAcceptedBlogs()">
+<!-- {{bcc.blogsNotAccepted}} -->
+<div  style="margin: 4em;" ng-repeat="bna in blogsNotAccepted.blogsNotAccepted ">
+<h1>TITLE:{{bna.blog_name}} </h1>
+<h6>Authored By:{{bna.user_name}} </h6><h6>Created On:<span ng-bind="bna.createdate"></span></h6> 
+<h6>STATUS:{{bna.status}} </h6>
+<h3>DESC:{{bna.blog_content}}</h3>
+<br>
+<a href="" ng-click="blogsNotAccepted.adminGet(bna)"><input type="button" class="btn" name="button" value="Read More"/></a>
+</div>
+</div>
+</div>
+<br>
+<div style="margin: 4em;" ng-controller="ForumController as forumNotAccepted">
+<h2 class="well">Forum</h2>
+<div class="newspaper" ng-init="forumNotAccepted.notAcceptedForum()">
+<div style="margin: 4em;" ng-repeat="fna in forumNotAccepted.forumNotAccepted">
+<h1>TITLE:{{fna.title}}</h1>
+<h3>Written By:{{fna.user_name}}</h3>
+<h4>Description:{{fna.description}}</h4>
+<h4>Status:{{fna.status}}</h4>
+<a href="" ng-click="forumNotAccepted.adminGet(fna)"><input type="button" class="btn" name="button" value="Read More"/></a>
+</div>
+</div>
+</div>

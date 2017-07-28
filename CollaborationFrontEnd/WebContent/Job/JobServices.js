@@ -6,10 +6,19 @@ app.service('JobServices', [ '$http', '$q', '$rootScope',
 
 			var BASE_URL = 'http://localhost:8080/RestController'
 			return {
+				
+				fetchAllJobs : function(){
+				console.log("calling fetchAlljobs ")
+				return $http.get(BASE_URL + '/Jobs').then(
+						function(response) {
+							return response.data;
+						}, null);
+			},
+
 
 				createJob : function(job) {
 					console.log("calling create job")
-					return $http.post(BASE_URL + '/Job', job) // 1
+					return $http.post(BASE_URL + '/job', job) // 1
 					.then(function(response) {
 						return response.data;
 					}, function(errResponse) {

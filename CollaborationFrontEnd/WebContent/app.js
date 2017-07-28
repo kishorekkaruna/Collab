@@ -26,6 +26,10 @@ app.config(function($routeProvider) {
 		controllerAs : 'jc'
 	})
 	
+	.when('/viewJob', {
+		templateUrl : 'Job/SingleView.html',
+	})
+	
 	.when('/blog', {
 		templateUrl : 'Blog/Blog.html',
 		controller : 'BlogController',
@@ -39,8 +43,33 @@ app.config(function($routeProvider) {
 	})
 
 	.when('/homeMain', {
-		templateUrl : 'home.html'
+		templateUrl : 'Home/Home.html'
 	})
+	
+	.when('/admin', {
+		templateUrl : 'Admin/ActApp.html'
+	})
+	
+	.when('/adminBlogdetail', {
+		templateUrl : 'Admin/BlogDetails.html',
+		controller : 'BlogController',
+		controllerAs : 'bcc'
+	})
+	
+	.when('/adminForumdetail', {
+		templateUrl : 'Admin/ForumDetails.html',
+		controller : 'ForumController',
+		controllerAs : 'fcc'
+	})
+	
+	.when('/viewBlog',{
+		templateUrl : 'Blog/SingleView.html'
+	})
+	
+	.when('/viewForum',{
+		templateUrl : 'Forum/Singleview.html'
+	})
+	
 
 	.otherwise({
 		redirectTo : '/register'
