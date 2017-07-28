@@ -2,6 +2,8 @@ package com.niit.collaborationbackend.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.collaborationbackend.dao.ForumDAO;
 import com.niit.collaborationbackend.model.Forum;
+import com.niit.collaborationbackend.model.User;
 
 @RestController
 public class ForumController {
@@ -37,14 +40,40 @@ public class ForumController {
 		return new ResponseEntity<Forum>(forum, HttpStatus.OK);
 	}
 	
+	@GetMapping("/AcceptedForum")
+	public ResponseEntity<List<Forum>> AcceptedForumList() {
+		List<Forum> listForum = forumDAO.getAcceptedList();
+		return new ResponseEntity<List<Forum>>(listForum, HttpStatus.OK);
+	}
+	
+	@GetMapping("/notAcceptedForum")
+	public ResponseEntity<List<Forum>> notAcceptedForumList() {
+		List<Forum> listForum = forumDAO.getNotAcceptedList();
+		return new ResponseEntity<List<Forum>>(listForum, HttpStatus.OK);
+	}
+	
 	@PostMapping("/forum")
-	public ResponseEntity<Forum> save(@RequestBody Forum forum) {
+	public ResponseEntity<Forum> save(@RequestBody Forum forum,HttpSession session) {
+		User user = (User) session.getAttribute("loggedInUser");
+		System.out.println(user.getDob());
+		forum.setUser_name(user.getUser_name());
+		forum.setUser_id(user.getUserId());
+		forum.setStatus("NA");
+		
 		forumDAO.save(forum);
 		return new ResponseEntity(forum, HttpStatus.OK);
 	}
 
-	@PutMapping("/forum")
+	@PutMapping("/forums")
 	public ResponseEntity<Forum> update(@RequestBody Forum forum) {
+		forumDAO.saveOrUpdate(forum);
+		return new ResponseEntity(forum, HttpStatus.OK);
+	}
+	
+	@PutMapping("/forumAccept")
+	public ResponseEntity<Forum> updat(@RequestBody Forum forum) {
+		forum.setStatus("A");
+		
 		forumDAO.saveOrUpdate(forum);
 		return new ResponseEntity(forum, HttpStatus.OK);
 	}

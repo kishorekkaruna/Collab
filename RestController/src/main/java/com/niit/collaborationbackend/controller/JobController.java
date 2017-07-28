@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.collaborationbackend.dao.JobDAO;
 import com.niit.collaborationbackend.model.Job;
-import com.niit.collaborationbackend.model.User;
 
 @RestController
 public class JobController {
@@ -38,8 +37,9 @@ public class JobController {
 		return new ResponseEntity<Job>(job, HttpStatus.OK);
 	}
 	
-	@PostMapping("/Job")
+	@PostMapping("/job")
 	public ResponseEntity<Job> save(@RequestBody Job job) {
+		
 		jobDAO.save(job);
 		return new ResponseEntity<Job>(job, HttpStatus.OK);
 	}

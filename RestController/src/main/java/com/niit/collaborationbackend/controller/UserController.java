@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.collaborationbackend.dao.UserDAO;
@@ -75,8 +76,8 @@ public class UserController {
 		return new ResponseEntity("deleted for ID " + id, HttpStatus.OK);
 
 	}
-	
-	@RequestMapping("/login")
+
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ResponseEntity<?> login(@RequestBody User user, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		User validUser = userDAO.login(user);
@@ -85,7 +86,7 @@ public class UserController {
 			return new ResponseEntity<Error>(error, HttpStatus.UNAUTHORIZED);
 		} else {
 			session.setAttribute("loggedInUser", validUser);
-			
+
 			System.out.println(validUser.getEmail_id());
 			System.out.println("hi");
 			System.out.println(validUser.getUser_name());
@@ -96,4 +97,19 @@ public class UserController {
 		}
 	}
 
+	@RequestMapping(value = "/logout", method = RequestMethod.PUT)
+	public ResponseEntity<?> logout(HttpSession session) {
+		User user = (User) session.getAttribute("loggedInUser");
+		if (user == null) {
+			Error error = new Error("Unauthorized user.. Please Login..");
+			return new ResponseEntity<Error>(error, HttpStatus.UNAUTHORIZED);
+		} else {
+			// user.setOnline(false);
+			userDAO.update(user);
+			session.removeAttribute("loggedInUser");
+			session.invalidate();
+			return new ResponseEntity<Void>(HttpStatus.OK);
+}
+
+}
 }

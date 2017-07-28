@@ -50,6 +50,18 @@ public class BlogController {
 		return new ResponseEntity<Blog>(blog, HttpStatus.OK);
 
 	}
+	
+	@GetMapping("/acceptedblog")
+	public ResponseEntity<List<Blog>> AcceptedBlogList() {
+		List<Blog> listblog = blogDAO.getAcceptedBlog();
+		return new ResponseEntity<List<Blog>>(listblog, HttpStatus.OK);
+	}
+	
+	@GetMapping("/notAcceptedblog")
+	public ResponseEntity<List<Blog>> notAcceptedBlogList() {
+		List<Blog> listblog = blogDAO.getNotAcceptedBlog();
+		return new ResponseEntity<List<Blog>>(listblog, HttpStatus.OK);
+	}
 
 	@PostMapping("/blog")
 	public ResponseEntity<Blog> save(@RequestBody Blog blog,HttpSession session) {
@@ -58,9 +70,8 @@ public class BlogController {
 		blog.setUser_name(user.getUser_name());
 		blog.setEmail_Id(user.getEmail_id());
 		blog.setUser_id(user.getUserId());
-		blog.setStatus("A");
-		
-		
+		blog.setStatus("NA");
+	
 		blogDAO.save(blog);
 		return new ResponseEntity<Blog>(blog, HttpStatus.OK);
 	}
@@ -70,6 +81,15 @@ public class BlogController {
 		blogDAO.saveOrUpdate(blog);
 		return new ResponseEntity<Blog>(blog, HttpStatus.OK);
 	}
+	
+	@PutMapping("acceptBlog")
+	public ResponseEntity<Blog> accept(@RequestBody Blog blog) {
+		blog.setStatus("A");
+		blogDAO.saveOrUpdate(blog);
+		return new ResponseEntity<Blog>(blog, HttpStatus.OK);
+	}
+	
+	
 
 	@DeleteMapping("/blog/{blogId}")
 	public ResponseEntity<Blog> deleteUser(@PathVariable("blogId") int id) {
