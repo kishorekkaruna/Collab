@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Raleway", sans-serif
+}
+
+body, html {
+	height: 100%;
+	line-height: 1.8;
+}
+</style>
+</head>
+<body style="margin: 3em;">
+<div class="column-content-region col-sm-3" style="margin: 4em;">
+	<div data-ng-init="frnd.fetchAllUsers()">
+		<h2 class="w3-center">Add Friend</h2>
+
+		<div data-ng-repeat="all in frnd.asd"
+			data-ng-if="all.user_name != currentUser.user_name">
+			<nav style="">
+				<table>
+					<tbody>
+					<thead>
+						<h1>
+							<span data-ng-bind="all.user_name"></span>
+						</h1>
+					</thead>
+					<tr>
+						<td><a href="" data-ng-click="frnd.send(all)"><button
+									type="button" class="w3-button w3-white w3-border w3-round-large">Add buddy</button></a></td>
+						<!-- <td><button type="button" class="button">Cancel Request</button></td> -->
+					</tr>
+					</tbody>
+				</table>
+			</nav>
+		</div>
+	</div></div>
+	<div class="column-content-region col-sm-3" style="margin-left: 4em;">
+		<div data-ng-init="frnd.requestedFriend()">
+			<h2 class="w3-center">Requested Friend</h2>
+			<div data-ng-repeat="req in frnd.reqFriend"
+				data-ng-if="req.userName != currentUser.user_name">
+				<nav style="">
+					<table>
+						<th><h1>
+								<span data-ng-bind="req.userName"></span>
+							</h1></th>
+						<tr>
+							<td><a href="" data-ng-click="frnd.acceptFriend(req)"><button
+										type="button" class="w3-button w3-white w3-border w3-round-large">Accept</button></a></td>
+							<td><a href="" data-ng-click="frnd.deleteFriendRequest(req)"><button
+										type="button" class="w3-button w3-white w3-border w3-round-large">Reject</button></a></td>
+						</tr>
+					</table>
+				</nav>
+			</div>
+		</div>
+	</div>
+	
+	<div class="column-content-region col-sm-3" style="margin-left: 4em;">
+<div data-ng-init="frnd.AcceptedFriendCurrentUser()"> 
+<h2 class="w3-center">Friend List</h2>
+<div  data-ng-repeat="acc in frnd.accFriend">
+<nav style="center">
+<table>
+<th><h1><span data-ng-bind="acc.userName"></span>  </h1></th>
+<tr>
+</tr>
+</table>
+</nav>
+</div></div></div>
+</body>
+</html>

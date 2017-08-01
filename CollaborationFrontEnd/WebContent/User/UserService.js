@@ -32,7 +32,7 @@ console.log("UserService...")
   	   console.log("Calling the method authenticate with the user :"+user)
 		 
       return $http.post(BASE_URL+'/login', user).then(function(response){
-                          return response; 
+                          return response.data; 
                        
                       }, 
                      null
@@ -47,6 +47,13 @@ console.log("UserService...")
                             }, 
                           null
                     );
+     	},
+     	
+     	fetchAllUsers:function(){
+     		console.log('Fetching the users')
+     		return $http.get(BASE_URL+'/users').then(function(response){
+     			return response.data;
+     		}, null);
      	},
 	}
 }

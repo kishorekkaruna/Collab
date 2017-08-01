@@ -89,7 +89,8 @@ body {
 
 /* Container */
 .container {
-  position: relative;
+  
+  padding-top:4em;
   max-width: 460px;
   width: 100%;
   margin: 0 auto 100px;
@@ -183,10 +184,10 @@ body {
 .card .title {
   position: relative;
   z-index: 1;
-  border-left: 5px solid #ed2553;
+  border-left: 5px solid #666666;
   margin: 0 0 35px;
   padding: 10px 0 10px 50px;
-  color: #ed2553;
+  color: #666666;
   font-size: 32px;
   font-weight: 600;
   text-transform: uppercase;
@@ -313,7 +314,7 @@ body {
 }
 .card .footer {
   margin: 40px 0 0;
-  color: #ed2553;
+  color: #666666;
   font-size: 24px;
   font-weight: 300;
   text-align: center;

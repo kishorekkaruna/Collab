@@ -1,16 +1,18 @@
 'use strict'
 
-app.controller('ForumController',['$scope','ForumService','$cookies','$rootScope','$route','$http','$location'
-		,function($scope,ForumService,$cookies,$rootScope,$route,$http,$location){
+app.controller('ForumController',['$scope','ForumService','ForumCommentService','$cookies','$rootScope','$route','$http','$location'
+		,function($scope,ForumService,ForumCommentService,$cookies,$rootScope,$route,$http,$location){
 	console.log("Forum Controller....")
 	var self=this;
 	self.forum={forumid:'',title:'',user_id:'',description:'', forumDate:'', status:''};
 	self.forums=[];
+	self.forumComment={id:'',forumid:'',userId:'',user_name:'',forumComments:'',createdate:'',email_id:''};
+	self.froumComments=[];
 	
 
 
 
-										self.notAcceptedForum = function() {
+			self.notAcceptedForum = function() {
 				console.log("notAcceptedForum...")
 				ForumService.notAcceptedForum().then(function(d) {
 					console.log(d)
@@ -35,6 +37,15 @@ app.controller('ForumController',['$scope','ForumService','$cookies','$rootScope
 				$scope.fc=forum;
 				console.log($scope.fc);
 				$rootScope.forum=$scope.fc;
+				ForumCommentService.viewComment(forum.forumid).then (function(d){
+					console.log(d)
+					self.viewMessage = d;
+					$scope.cmt=self.viewMessage;
+					console.log(self.viewMessage)
+					$rootScope.comment= $scope.cmt
+				},function(errResponse){
+					console.error('Error while viewing comment');
+				});
 				$location.path("/viewForum");
 			};
 			
@@ -71,6 +82,8 @@ app.controller('ForumController',['$scope','ForumService','$cookies','$rootScope
 				console.log('calling Reset');
 				self.forum = { forumid:null,title:'',user_id:'',description:'', forumDate:'', status:''};
 				self.forums=[];
+				self.forumComment={id:null,forumid:'',userId:'',user_name:'',forumComments:'',createdate:'',email_id:''};
+				self.froumComments=[];
 			};
 	
 }

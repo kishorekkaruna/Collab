@@ -20,6 +20,18 @@ app.config(function($routeProvider) {
 		controllerAs : 'uc'
 	})
 	
+	.when('/register', {
+		templateUrl : 'User/Register.html',
+		controller : 'UserController',
+		controllerAs : 'uc'
+	})
+	
+	.when('/Friends', {
+		templateUrl : 'Friends/Friend.html',
+		controller : 'UserController',
+		controllerAs : 'frnd'
+	})
+	
 	.when('/job', {
 		templateUrl : 'Job/Job.html',
 		controller : 'JobController',
@@ -63,11 +75,20 @@ app.config(function($routeProvider) {
 	})
 	
 	.when('/viewBlog',{
-		templateUrl : 'Blog/SingleView.html'
+		templateUrl : 'Blog/SingleView.html',
+			controller : 'BlogController',
+			controllerAs : 'bd'
 	})
 	
 	.when('/viewForum',{
-		templateUrl : 'Forum/Singleview.html'
+		templateUrl : 'Forum/Singleview.html',
+			controller : 'ForumController',
+			controllerAs : 'fd'
+	})
+	
+	.when('/chat', {
+		templateUrl : 'Chat/Chat.html',
+		controller : 'ChatController'
 	})
 	
 

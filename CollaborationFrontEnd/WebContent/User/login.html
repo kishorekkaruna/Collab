@@ -24,20 +24,20 @@
 
 
 	<div class="container">
-		<div ng-submit="uc.login()">
+		<div data-ng-submit="uc.login()">
 			<div class="card"></div>
 
 			<div class="card">
 				<h1 class="title">Login</h1>
-				<form ng-submit="login.login()" method="post">
+				<form data-ng-submit="login.login()" method="post">
 					<div class="input-container">
 						<input type="text" id="#{label}" required="required"
-							ng-model="uc.user.email_id" /> <label for="#{label}">Username</label>
+							data-ng-model="uc.user.email_id" /> <label for="#{label}">Username</label>
 						<div class="bar"></div>
 					</div>
 					<div class="input-container">
 						<input type="password" id="#{label}" required="required"
-							ng-model="uc.user.password" /> <label for="#{label}">Password</label>
+							data-ng-model="uc.user.password" /> <label for="#{label}">Password</label>
 						<div class="bar"></div>
 					</div>
 					<div class="button-container">
@@ -52,56 +52,9 @@
 			</div>
 		</div>
 
-		<div class="card alt">
-			<div class="toggle"></div>
-			<h1 class="title">
-				Register
-				<div class="close"></div>
-			</h1>
-			<form ng-submit="uc.submit()">
-				<div class="input-container">
-					<input type="text" name="user_name" id="#{label}"
-						required="required" ng-model="uc.user.user_name" /> <label
-						for="Username">Username</label>
-					<div class="bar"></div>
-				</div>
-				<div class="input-container">
-					<input type="text" name="first_name" id="#{label}"
-						required="required" ng-model="uc.user.first_name" /> <label
-						for="Firstname">Firstname</label>
-					<div class="bar"></div>
-				</div>
-				<div class="input-container">
-					<input type="text" name="last_name" id="#{label}"
-						required="required" ng-model="uc.user.last_name" /> <label
-						for="Lastname">Lastname</label>
-					<div class="bar"></div>
-				</div>
-				<div class="input-container">
-					<input type="password" name="password" id="#{label}"
-						required="required" ng-model="uc.user.password" /> <label
-						for="Password">Password</label>
-					<div class="bar"></div>
-				</div>
-				<div class="input-container">
-					<input type="email" name="email_id" id="#{label}"
-						required="required" ng-model="uc.user.email_id" /> <label
-						for="Email">Email</label>
-					<div class="bar"></div>
-				</div>
-				<div class="input-container">
-					<input type="date" name="dob" id="#{label}" required="required"
-						ng-model="uc.user.dob" /> <label for="DOB">D-O-B</label>
-					<div class="bar"></div>
-				</div>
-				<div class="button-container">
-					<button type="submit" onclick="">
-						<span>Next</span>
-					</button>
-				</div>
-			</form>
+		
 		</div>
-	</div>
+	
 	<!-- Portfolio-->
 	<a id="portfolio" href="http://andytran.me/" title="View my portfolio!"><i
 		class="fa fa-link"></i></a>

@@ -1,15 +1,68 @@
+<html>
+<head>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<body>
-	<div style="margin: 2em;">
-	<h1>{{blog.user_name}}'s Blog</h1>
+<style>
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Raleway", sans-serif
+}
+
+body, html {
+	height: 100%;
+	line-height: 1.8;
+}
+/* Full height image header */
+
+
+.w3-bar .w3-button {
+	padding: 16px;
+}
+</style>
+</head>
+<body class="w3-bar">
+	<div style="margin: 4em;">
+
+		<h1>{{blog.user_name}}'s Blog</h1>
 		<h3>{{blog.blog_name}}</h3>
 		<h5>
 			Created by : <b>{{blog.user_name}}</b> | Created On : <b>{{blog.createdate}}</b>
 		</h5>
 		<h4>{{blog.blog_content}}</h4>
+		<h4>{{}}</h4>
+	
+
+
+	<form class="w3-container w3-card-4 w3-light-grey"
+		data-ng-submit="bd.createBlogComment(bd.blogComment)">
+		<h2>Please Share Your Comments here!!</h2>
+		<p>
+			<label>User Name</label> <input class="w3-input w3-border"
+				name="user_name" type="text" data-ng-model="currentUser.user_name">
+		</p>
+
+		<p>
+			<label>Comment</label> <input class="w3-input w3-border"
+				name="message" type="text" data-ng-model="bd.blogComment.message">
+		</p>
+		<p>
+			<button class="w3-btn w3-grey">Submit</button>
+		<p>
+	</form>
+	<div data-ng-repeat="bcv in comment">
+
+		<h3>
+			UserName: <span data-ng-bind="bcv.user_name"></span>
+		</h3>
+
+		<!-- <td>{{cv.userName}}</td> -->
+		<h5>
+			Comment: <span data-ng-bind="bcv.message"></span>
+		</h5>
+		<hr style="clear: both;" />
+	</div>
 	</div>
 </body>
+</html>

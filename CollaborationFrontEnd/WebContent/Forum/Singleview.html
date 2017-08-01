@@ -27,14 +27,46 @@ body, html {
 }
 </style>
 </head>
-<body>
-	<div style="margin: 2em;">
+<body class="w3-bar">
+	<div style="margin: 4em;">
 		<h1>{{forum.user_name}}'s Forum</h1>
 		<h3>{{forum.title}}</h3>
 		<h5>
 			Created by : <b>{{forum.user_name}}</b> | Created On : <b>{{forum.forumDate}}</b>
 		</h5>
 		<h4>{{forum.description}}</h4>
+	
+	
+	<form class="w3-container w3-card-4 w3-light-grey"
+		data-ng-submit="fd.createFroumComment(fd.forumComment)">
+		<h2>Please Share Your Comments here!!</h2>
+		<p>
+			<label>User Name</label> <input class="w3-input w3-border"
+				name="user_name" type="text" data-ng-model="currentUser.user_name">
+		</p>
+
+		<p>
+			<label>Comment</label> <input class="w3-input w3-border"
+				name="forumComments" type="text" data-ng-model="fd.forumComment.forumComments">
+		</p>
+		<p>
+			<button class="w3-btn w3-grey">Submit</button>
+		<p>
+	</form>
+	
+	<div data-ng-repeat="fvc in comment">
+
+		<h3>
+			UserName: <span data-ng-bind="fvc.user_name"></span>
+		</h3>
+
+		<!-- <td>{{cv.userName}}</td> -->
+		<h5>
+			Comment: <span data-ng-bind="fvc.forumComments"></span>
+		</h5>
+		<hr style="clear: both;" />
+	</div>
+	
 	</div>
 </body>
 </html>

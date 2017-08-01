@@ -1,12 +1,14 @@
 'use strict';
 
-app.controller('BlogController',['$scope','BlogService','$cookies','$rootScope','$route','$http','$location'
-	,function($scope,BlogService,$cookies,$rootScope,$route,$http,$location){
+app.controller('BlogController',['$scope','BlogService','BlogCommentService','$cookies','$rootScope','$route','$http','$location'
+	,function($scope,BlogService,BlogCommentService,$cookies,$rootScope,$route,$http,$location){
 	
 	console.log('Blog Controller...');
 	var self = this;
 	self.blog={blogId:'',blog_name:'',blog_content:'',user_id:'',email_Id:'',user_name:'',createdate:'',status:'',likes:''};
 	self.blogs=[];
+	self.blogComment={blogId:'',blog_name:'',message:'',commentdate:'',user_id:'',user_name:'',email_Id:''};
+	self.blogComments=[];
 	
 	
 	
@@ -48,6 +50,17 @@ app.controller('BlogController',['$scope','BlogService','$cookies','$rootScope',
 					$scope.bc=blog;
 					console.log($scope.bc);
 					$rootScope.blog=$scope.bc;
+					BlogCommentService.viewComment(blog.blogId).then (function(d){
+						console.log(d)
+						self.viewMessage = d;
+						$scope.cmt=self.viewMessage;
+						console.log(self.viewMessage)
+						$rootScope.comment= $scope.cmt
+					},function(errResponse){
+						console.error('Error while viewing comment');
+					});
+					
+					
 					$location.path("/viewBlog");
 				};
 				
@@ -74,6 +87,20 @@ app.controller('BlogController',['$scope','BlogService','$cookies','$rootScope',
 					console.error('Error while creating Job.');
 				})
 			};
+			
+			self.createBlogComment = function(blogComment){
+				console.log('Calling Comment')
+				$scope.recentblog=$rootScope.blog;
+				BlogCommentService.createBlogComment(blogComment).then(function(d){
+					self.message=d;
+					alert("thank you for your valuable comment");
+					self.get($scope.recentblog);
+					self.reset();
+				}, function(errResponse){
+					console.log('error while creating Comment');
+				})
+			};
+			
 			self.submit = function() {
 				console.log('Calling Submit...')
 				self.createBlog(self.blog);
@@ -81,9 +108,10 @@ app.controller('BlogController',['$scope','BlogService','$cookies','$rootScope',
 	self.reset = function(){
 		console.log('calling Reset');
 		self.blog = { blogId:null,blog_name:'',blog_content:'',user_id:'',email_Id:'',user_name:'',createdate:'',status:'',likes:''};
+		self.blogComment={blogId:null,blog_name:'',message:'',commentdate:'',user_id:'',user_name:'',email_Id:''};
 		self.blogs=[];
-		
+		self.blogComments=[];
 	};
-
+	
 	
 }])
