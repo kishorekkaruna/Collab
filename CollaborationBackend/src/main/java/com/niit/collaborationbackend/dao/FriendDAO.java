@@ -8,6 +8,8 @@ public interface FriendDAO {
 
 	public List<Friend> list();
 
+	public List<Friend> listUser(int userId);
+
 	public List<Friend> list(int friendId);
 
 	public void save(Friend friend);
@@ -21,5 +23,7 @@ public interface FriendDAO {
 	public List<Friend> getByFriendAccepted(String name);
 
 	public void delete(int friendId);
+	
+	public List<Friend> listUnion(int userId	);
 
 }

@@ -47,7 +47,7 @@ public class ForumCommentDAOImpl implements ForumCommentDAO {
 	}
 
 	public List<ForumComment> getForumComments(int forumId) {
-		String hql="from ForumComment where id="+"'"+forumId+"'";
+		String hql="from ForumComment where forumid="+"'"+forumId+"'";
 		org.hibernate.Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<ForumComment> forumCommentList = (List<ForumComment>) query.list();
 		

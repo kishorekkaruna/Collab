@@ -40,23 +40,13 @@ public class FriendDAOImpl implements FriendDAO {
 	}
 
 	public Friend getByFriendId(int friendId) {
-		String oracle="from Friend where friendId="+"'"+friendId+"'";
+		String oracle = "from Friend where friendId=" + "'" + friendId + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(oracle);
 		@SuppressWarnings("unchecked")
 		List<Friend> friendlist = (List<Friend>) query.list();
 		if (friendlist != null && !friendlist.isEmpty()) {
 			return friendlist.get(0);
 		}
-		return null;
-	}
-
-	public List<Friend> getByFriendName(String name) {
-
-		return null;
-	}
-
-	public List<Friend> getByFriendAccepted(String name) {
-
 		return null;
 	}
 
@@ -69,6 +59,50 @@ public class FriendDAOImpl implements FriendDAO {
 	public void saveOrUpdate(Friend friend) {
 		sessionFactory.getCurrentSession().saveOrUpdate(friend);
 
+	}
+
+	public List<Friend> listUser(int userId) {
+		System.out.println("userid vvalue that logged in" +userId);
+		String hql = "from Friend where userId =" + "'" + userId + "'";
+		org.hibernate.Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Friend> listFriend = (List<Friend>) query.list();
+
+		return listFriend;	
+	}
+	
+	
+	public List<Friend> getByFriendName(String name) {
+		String hql = "from Friend where friendName =" + "'" + name + "' and status = " + "'P'";
+		org.hibernate.Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Friend> listFriend = (List<Friend>) query.list();
+		return listFriend;
+	}
+	
+	
+	public List<Friend> getByFriendAccepted(String name){
+		String hql = "from Friend where friendName =" + "'" + name + "' and status = " + "'A'";
+		org.hibernate.Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Friend> listFriend = (List<Friend>) query.list();
+		return listFriend;
+}
+
+	public List<Friend> listUnion(int userId) {
+//		String hql = "from Friend where friendName =" + "'" + friend + "' or userName = '" + friend +"'";
+		String hql = "from Friend where userId =" + "'" + userId + "'";
+
+		//String hql1 = "from Friend where friendName =" + "'" + friend + "'";
+//		String hql = ("select * from user123 where user_name in (select user_name from user123 where user_name!=? minus (select userId from Friend where friendId=?"
+//				+ "union select friendId from Friend where userId=?"
+//				+ "))");
+// 
+		org.hibernate.Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Friend> listFriend = (List<Friend>) query.list();
+		return listFriend;
+		
 	}
 
 }

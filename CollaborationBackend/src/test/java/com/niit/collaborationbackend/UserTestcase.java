@@ -4,6 +4,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.niit.collaborationbackend.dao.BlogCommentDAO;
 import com.niit.collaborationbackend.dao.BlogDAO;
+import com.niit.collaborationbackend.dao.EventDAO;
 import com.niit.collaborationbackend.dao.ForumCommentDAO;
 import com.niit.collaborationbackend.dao.ForumDAO;
 import com.niit.collaborationbackend.dao.FriendDAO;
@@ -11,6 +12,7 @@ import com.niit.collaborationbackend.dao.JobDAO;
 import com.niit.collaborationbackend.dao.UserDAO;
 import com.niit.collaborationbackend.model.Blog;
 import com.niit.collaborationbackend.model.BlogComment;
+import com.niit.collaborationbackend.model.Event;
 import com.niit.collaborationbackend.model.Forum;
 import com.niit.collaborationbackend.model.ForumComment;
 import com.niit.collaborationbackend.model.Friend;
@@ -31,7 +33,8 @@ public class UserTestcase {
 		ForumDAO forumDAO = (ForumDAO) context.getBean("forumDAO");
 		ForumCommentDAO forumCommentDAO = (ForumCommentDAO) context.getBean("forumCommentDAO");
 		JobDAO jobDAO=(JobDAO) context.getBean("jobDAO");
-		FriendDAO friendDAO=(FriendDAO) context.getBean("friendDAO");		
+		FriendDAO friendDAO=(FriendDAO) context.getBean("friendDAO");	
+		EventDAO eventDAO=(EventDAO) context.getBean("eventDAO");
 
 		User user = (User) context.getBean("user");
 		Blog blog = (Blog) context.getBean("blog");
@@ -40,6 +43,7 @@ public class UserTestcase {
 		ForumComment forumComment = (ForumComment) context.getBean("forumComment");
 		Job job = (Job) context.getBean("job");
 		Friend friend = (Friend) context.getBean("friend");
+		Event event = (Event) context.getBean("event");
 
 		/* User Table */
 		user.setFirst_name("Kishore");
@@ -96,6 +100,11 @@ public class UserTestcase {
 		friend.setStatus("Y");
 		
 		friendDAO.save(friend);
+		
+//		Event
+		event.setDescription("Hi this event is going to held on saturday");
+		
+		eventDAO.save(event);
 		
 	}
 

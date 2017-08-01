@@ -21,7 +21,7 @@ public class BlogComment {
 	private int blogId;
 	private String blog_name;
 	private String message;
-	private Date commentdate;
+//	private Date commentdate;
 	private int user_id;
 	private String user_name;
 	private String email_Id;
@@ -53,12 +53,12 @@ public class BlogComment {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public Date getCommentdate() {
-		return commentdate;
-	}
-	public void setCommentdate(Date commentdate) {
-		this.commentdate = commentdate;
-	}
+//	public Date getCommentdate() {
+//		return commentdate;
+//	}
+//	public void setCommentdate(Date commentdate) {
+//		this.commentdate = commentdate;
+//	}
 	public int getUser_id() {
 		return user_id;
 	}

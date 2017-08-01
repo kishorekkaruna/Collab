@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.collaborationbackend.dao.BlogCommentDAO;
 import com.niit.collaborationbackend.dao.BlogDAO;
+import com.niit.collaborationbackend.dao.EventDAO;
 import com.niit.collaborationbackend.dao.ForumCommentDAO;
 import com.niit.collaborationbackend.dao.ForumDAO;
 import com.niit.collaborationbackend.dao.FriendDAO;
@@ -23,6 +24,7 @@ import com.niit.collaborationbackend.dao.JobDAO;
 import com.niit.collaborationbackend.dao.UserDAO;
 import com.niit.collaborationbackend.daoimpl.BlogCommentDAOImpl;
 import com.niit.collaborationbackend.daoimpl.BlogDAOImpl;
+import com.niit.collaborationbackend.daoimpl.EventDAOImpl;
 import com.niit.collaborationbackend.daoimpl.ForumCommentDAOImpl;
 import com.niit.collaborationbackend.daoimpl.ForumDAOImpl;
 import com.niit.collaborationbackend.daoimpl.FriendDAOImpl;
@@ -30,6 +32,8 @@ import com.niit.collaborationbackend.daoimpl.JobDAOImpl;
 import com.niit.collaborationbackend.daoimpl.UserDAOImpl;
 import com.niit.collaborationbackend.model.Blog;
 import com.niit.collaborationbackend.model.BlogComment;
+import com.niit.collaborationbackend.model.Chat;
+import com.niit.collaborationbackend.model.Event;
 import com.niit.collaborationbackend.model.Forum;
 import com.niit.collaborationbackend.model.ForumComment;
 import com.niit.collaborationbackend.model.Friend;
@@ -82,6 +86,9 @@ public class AppConfig {
 		sessionBuilder.addAnnotatedClass(ForumComment.class);
 		sessionBuilder.addAnnotatedClass(Job.class);
 		sessionBuilder.addAnnotatedClass(Friend.class);
+		sessionBuilder.addAnnotatedClass(Event.class);
+		sessionBuilder.addAnnotatedClass(Chat.class);
+		
 
 		return sessionBuilder.buildSessionFactory();
 	}
@@ -141,6 +148,14 @@ public class AppConfig {
 	@Bean(name = "friendDAO")
 	public FriendDAO getfriendDAO(SessionFactory sessionFactory) {
 		return new FriendDAOImpl(sessionFactory);
+
+	}
+	
+
+	@Autowired(required = true)
+	@Bean(name = "eventDAO")
+	public EventDAO geteventDAO(SessionFactory sessionFactory) {
+		return new EventDAOImpl(sessionFactory);
 
 	}
 
